@@ -220,42 +220,89 @@ const App = () => {
     }
   };
   
+
+
   return (
-    <>
-      {/* Play/Pause/Stop controls */}
-      {selectedVideoId && (
-        <div style={{ marginBottom: 20 }}>
-          <button onClick={() => handleVideoPlay(selectedVideoId)}>▶️ Play</button>
-          <button onClick={handleVideoPause}>⏸️ Pause</button>
-          <button onClick={handleStop}>🛑 Stop</button>
-        </div>
-      )}
-
-      {/* Text input */}
-      <input
-        type="text"
-        placeholder="Enter text"
-        value={newText}
-        onChange={(e) => setNewText(e.target.value)}
-      />
-      <button onClick={handleTextAdd}>Add Text</button>
-
-      
-      <input id="images" type="file" accept="image/*" onChange={handleImageUpload} />
-      <label htmlFor="video">Add video to play</label>
-      <input type="file" accept="video/*" onChange={handleVideoUpload} id="video" />
-
-
-      {selectedId && selectedId.startsWith("text") && (
-  <div style={{ marginTop: '10px' }}>
-    <button onClick={() => moveTextTo('up')}>⬆️</button>
-    <div>
-      <button onClick={() => moveTextTo('left')}>⬅️</button>
-      <button onClick={() => moveTextTo('right')}>➡️</button>
+    
+   <>
+  {selectedVideoId && (
+    <div style={{ marginBottom: 20, textAlign: 'center' }}>
+      <button onClick={() => handleVideoPlay(selectedVideoId)} className="button">
+        ▶️ Play
+      </button>
+      <button onClick={handleVideoPause} className="button">
+        ⏸️ Pause
+      </button>
+      <button onClick={handleStop} className="button">
+        🛑 Stop
+      </button>
     </div>
-    <button onClick={() => moveTextTo('down')}>⬇️</button>
+  )}
+
+  <div style={{ textAlign: 'center', margin: '10px 0' }}>
+    <input
+      type="text"
+      placeholder="Enter text"
+      value={newText}
+      onChange={(e) => setNewText(e.target.value)}
+      className="input-text"
+    />
+    <button onClick={handleTextAdd} className="button">
+      Add Text
+    </button>
   </div>
-)}
+
+
+  <div style={{ textAlign: 'center', margin: '10px 0' }}>
+  <label htmlFor="images">Add image</label>
+    <input
+      id="images"
+      type="file"
+      accept="image/*"
+      onChange={handleImageUpload}
+      className="file-input"
+    />
+    <label htmlFor="video" className="label">
+      Add video to play
+    </label>
+    <input
+      type="file"
+      accept="video/*"
+      onChange={handleVideoUpload}
+      id="video"
+      className="file-input"
+    />
+  </div>
+
+  {selectedId && selectedId.startsWith('text') && (
+    <div style={{ textAlign: 'center', marginTop: '10px' }}>
+      <button onClick={() => moveTextTo('up')} className="button">
+        ⬆️
+      </button>
+      <div>
+        <button onClick={() => moveTextTo('left')} className="button">
+          ⬅️
+        </button>
+        <button onClick={() => moveTextTo('right')} className="button">
+          ➡️
+        </button>
+      </div>
+      <button onClick={() => moveTextTo('down')} className="button">
+        ⬇️
+      </button>
+    </div>
+  )}
+
+  {selectedId && (
+    <div style={{ margin: '10px 0', textAlign: 'center' }}>
+      <button onClick={moveForward} className="button">
+        🔼 Move Forward
+      </button>
+      <button onClick={moveBackward} className="button">
+        🔽 Move Backward
+      </button>
+    </div>
+  )}
 
      
       <Stage ref={stageRef}
@@ -319,16 +366,12 @@ const App = () => {
 
       </Stage>
 
-      {selectedId && (
-        <div style={{ margin: '10px 0' }}>
-          <button onClick={moveForward}>🔼 Move Forward</button>
-          <button onClick={moveBackward}>🔽 Move Backward</button>
-        </div>
-      )}
-
+  
    
     </>
   );
 };
 
 export default App;
+
+

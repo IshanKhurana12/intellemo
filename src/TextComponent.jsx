@@ -15,6 +15,7 @@ const TextComponent = ({ textProps, isSelected, onSelect, onChange }) => {
   return (
     <>
       <Text
+        fill={'white'}
         ref={shapeRef}
         {...textProps}
         draggable
