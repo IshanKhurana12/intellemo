@@ -309,7 +309,7 @@ const App = () => {
 
         width={window.innerWidth}
         height={window.innerHeight}
-        onMouseDown={() => setSelectedId(null)}
+      
       >
         <Layer>
           {images.map((img) => (
@@ -373,5 +373,3 @@ const App = () => {
 };
 
 export default App;
-
-
